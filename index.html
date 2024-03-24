@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt" class="light-mode">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gerenciador de Tarefas</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body.light-mode {
+            background-color: #f8f9fa;
+            color: black;
+        }
+
+        body.dark-mode {
+            background-color: #343a40;
+            color: white;
+        }
+
+        .dark-mode .btn-outline-dark {
+            border-color: white;
+            color: white;
+        }
+
+        .dark-mode .list-group-item {
+            background-color: #343a40;
+            border-color: #495057;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-light bg-light mb-4">
+        <span class="navbar-brand mb-0 h1">Gerenciador de Tarefas</span>
+        <button id="toggle-dark-mode" class="btn btn-outline-dark">Modo Escuro</button>
+    </nav>
+    <div class="container mt-4">
+        <h1 class="mb-4">Gerenciador de Tarefas</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Adicionar Projeto</h2>
+                <form id="project-form" class="mb-3">
+                    <input type="text" id="project-name" class="form-control mb-2" placeholder="Nome do Projeto">
+                    <button type="submit" class="btn btn-primary">Adicionar Projeto</button>
+                </form>
+                <h2>Projetos</h2>
+                <ul id="projects-list" class="list-group"></ul>
+            </div>
+            <div class="col-md-6">
+                <h2>Adicionar Tarefa</h2>
+                <form id="task-form" class="mb-3">
+                    <input type="text" id="task-description" class="form-control mb-2"
+                        placeholder="Descrição da Tarefa">
+                    <h4>Projeto:</h4>
+                    <select id="task-project" class="form-control mb-2"></select>
+                    <button type="submit" class="btn btn-primary">Adicionar Tarefa</button>
+                </form>
+                <h2>Tarefas</h2>
+                <ul id="tasks-list" class="list-group"></ul>
+            </div>
+        </div>
+        <h2 class="mt-4">Painel de Status</h2>
+        <div id="status-panel">
+            <canvas id="statusChart"></canvas>
+        </div>
+
+        <h2 class="mt-4">Projetos Concluídos</h2>
+        <ul id="completed-projects-list" class="list-group mb-4"></ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
