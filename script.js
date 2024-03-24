@@ -62,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateTaskProjectSelect() {
         taskProjectSelect.innerHTML = projects.map(project => `<option value="${project.id}">${project.name}</option>`).join('');
     }
+
+    //test
     function updateTasksList() {
         tasksList.innerHTML = ''; // Limpa a lista existente
 
