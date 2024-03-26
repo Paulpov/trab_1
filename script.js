@@ -161,19 +161,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função para verificar e atualizar projetos concluídos
     function checkAndUpdateCompletedProjects() {
         const completedProjectsList = document.getElementById('completed-projects-list');
+        const cancelledProjectsList = document.getElementById('cancelled-projects-list');
         completedProjectsList.innerHTML = ''; // Limpa a lista para reavaliação
 
         projects.forEach(project => {
             // Verifica se todas as tarefas deste projeto estão concluídas
             const projectTasks = tasks.filter(task => task.projectId === project.id);
             const allTasksCompleted = projectTasks.length > 0 && projectTasks.every(task => task.status === 'Concluido');
-
+            const allTasksCancelled = projectTasks.length > 0 && projectTasks.every(task => task.status === 'Cancelado');   
             if (allTasksCompleted) {
                 // Adiciona o projeto à lista de projetos concluídos
                 const li = document.createElement('li');
                 li.className = 'list-group-item';
                 li.textContent = project.name;
                 completedProjectsList.appendChild(li);
+
+                // Remove tarefas concluídas da lista principal (se desejado)
+                tasks = tasks.filter(task => task.projectId !== project.id);
+            }
+
+
+            if (allTasksCancelled) {
+                // Adiciona o projeto à lista de projetos cancelados
+                const li = document.createElement('li');
+                li.className = 'list-cancel-item';
+                li.textContent = project.name;
+                cancelledProjectsList.appendChild(li);
 
                 // Remove tarefas concluídas da lista principal (se desejado)
                 tasks = tasks.filter(task => task.projectId !== project.id);
